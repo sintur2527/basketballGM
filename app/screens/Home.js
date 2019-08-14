@@ -4,7 +4,6 @@ import { Layout } from 'react-native-ui-kitten';
 
 import Header from '../components/Header';
 import Team from '../components/Team';
-
 import RosterButton from '../components/RosterButton';
 
 import EStyleSheet from 'react-native-extended-stylesheet';
@@ -19,7 +18,7 @@ const styles = EStyleSheet.create({
 const Home = props => {
   return (
     <Layout style={{ flex: 1 }}>
-      <StatusBar translucent={false} barStyle="light-content" />
+      <StatusBar translucent={false} barStyle="default" />
       <Header toggleTheme={props.toggleTheme} />
       <Team />
       <View style={styles.buttons}>

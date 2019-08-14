@@ -1,5 +1,11 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import {
+  Layout,
+  Text,
+  TopNavigation,
+  TopNavigationAction,
+  TopNavigationActionProps,
+} from 'react-native-ui-kitten';
 
 import EStyleSheet from 'react-native-extended-stylesheet';
 
@@ -13,19 +19,19 @@ const styles = EStyleSheet.create({
     backgroundColor: '$primaryColor',
   },
   text: {
-    fontSize: 28,
+    fontSize: 15,
     fontWeight: '600',
-    paddingTop: 15,
-    paddingBottom: 5,
-    color: '$white',
+    paddingTop: 20,
   },
 });
 
-const Header = () => {
+const Header = props => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Basketball GM</Text>
-    </View>
+    <TopNavigation
+      title="Team Page"
+      titleStyle={styles.text}
+      alignment="center"
+    />
   );
 };
 
