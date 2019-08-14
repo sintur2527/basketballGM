@@ -3,7 +3,7 @@ import { View, StatusBar } from 'react-native';
 import { Layout } from 'react-native-ui-kitten';
 
 import Header from '../components/Header';
-import { Team } from '../components/Team';
+import Team from '../components/Team';
 
 import RosterButton from '../components/RosterButton';
 
