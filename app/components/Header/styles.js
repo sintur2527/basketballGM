@@ -7,7 +7,7 @@ export default EStyleSheet.create({
     '@media ios': {
       paddingTop: 20,
     },
-    backgroundColor: '$primaryGray',
+    backgroundColor: '$primaryColor',
   },
   text: {
     fontSize: 28,
