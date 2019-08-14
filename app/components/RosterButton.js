@@ -1,11 +1,6 @@
 import React from 'react';
-import {
-  View,
-  TouchableHighlight,
-  Text,
-  Button,
-  Dimensions,
-} from 'react-native';
+import { Dimensions } from 'react-native';
+import { Layout, Button } from 'react-native-ui-kitten';
 
 import EStyleSheet from 'react-native-extended-stylesheet';
 
@@ -13,15 +8,12 @@ const buttonWidth = Dimensions.get('window').width / 2;
 
 const styles = EStyleSheet.create({
   container: {
-    backgroundColor: '$primaryColor',
-    width: buttonWidth,
     alignItems: 'center',
     padding: 5,
     marginTop: 10,
   },
-  text: {
-    fontSize: 20,
-    fontWeight: '600',
+  button: {
+    width: buttonWidth,
   },
 });
 
@@ -29,11 +21,11 @@ const handlePress = () => {
   console.log('press Roster');
 };
 
-const RosterButton = () => {
+const RosterButton = props => {
   return (
-    <View style={styles.container}>
-      <Button onPress={handlePress} title="Roster" color="#FFF" />
-    </View>
+    <Layout style={styles.container}>
+      <Button style={styles.button}>Roster</Button>
+    </Layout>
   );
 };
 

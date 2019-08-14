@@ -1,19 +1,20 @@
 import React from 'react';
-import { View, Text, Image } from 'react-native';
+import { Image } from 'react-native';
+import { Layout, Text } from 'react-native-ui-kitten';
 
 import styles from './styles';
 
 const Team = () => {
   return (
-    <View style={styles.container}>
+    <Layout style={styles.container}>
       <Image
         style={styles.image}
         source={require('./images/pistons_primary_on_dark.png')}
       />
-      <View style={styles.textContainer}>
+      <Layout style={styles.textContainer}>
         <Text style={styles.text}>Detroit Pistons</Text>
-      </View>
-    </View>
+      </Layout>
+    </Layout>
   );
 };
 

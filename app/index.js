@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import EStyleSheet from 'react-native-extended-stylesheet';
-import { mapping, light as lightTheme } from '@eva-design/eva';
-import { ApplicationProvider, Layout } from 'react-native-ui-kitten';
+import { mapping, light, dark } from '@eva-design/eva';
+import { ApplicationProvider } from 'react-native-ui-kitten';
+// import { theme } from './themes';
 
 import Home from './screens/Home';
 
@@ -11,15 +12,23 @@ EStyleSheet.build({
   $secondaryColor: '#FFC617',
 
   $white: '#FFFFFF',
-  // $outline: 1,
 });
 
-const App = () => (
-  <ApplicationProvider mapping={mapping} theme={lightTheme}>
-    <Layout style={{ flex: 1 }}>
-      <Home />
-    </Layout>
-  </ApplicationProvider>
-);
+const themes = { light, dark };
+
+const App = () => {
+  const [theme, setTheme] = useState('light');
+
+  const toggleTheme = () => {
+    const nextTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(nextTheme);
+  };
+
+  return (
+    <ApplicationProvider mapping={mapping} theme={themes[theme]}>
+      <Home toggleTheme={toggleTheme} />
+    </ApplicationProvider>
+  );
+};
 
 export default App;

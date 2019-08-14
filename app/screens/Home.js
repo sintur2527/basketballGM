@@ -2,7 +2,7 @@ import React from 'react';
 import { View, StatusBar } from 'react-native';
 import { Layout } from 'react-native-ui-kitten';
 
-import { Header } from '../components/Header';
+import Header from '../components/Header';
 import { Team } from '../components/Team';
 
 import RosterButton from '../components/RosterButton';
@@ -16,11 +16,11 @@ const styles = EStyleSheet.create({
   },
 });
 
-const Home = () => {
+const Home = props => {
   return (
-    <Layout>
+    <Layout style={{ flex: 1 }}>
       <StatusBar translucent={false} barStyle="light-content" />
-      <Header />
+      <Header toggleTheme={props.toggleTheme} />
       <Team />
       <View style={styles.buttons}>
         <RosterButton />
