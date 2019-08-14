@@ -1,17 +1,31 @@
 import React from 'react';
-import { View, StatusBar, Text } from 'react-native';
+import { View, StatusBar } from 'react-native';
+import { Layout } from 'react-native-ui-kitten';
 
-import { Container } from '../components/Container';
 import { Header } from '../components/Header';
 import { Team } from '../components/Team';
 
+import RosterButton from '../components/RosterButton';
+
+import EStyleSheet from 'react-native-extended-stylesheet';
+
+const styles = EStyleSheet.create({
+  buttons: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
+
 const Home = () => {
   return (
-    <Container>
+    <Layout>
       <StatusBar translucent={false} barStyle="light-content" />
       <Header />
       <Team />
-    </Container>
+      <View style={styles.buttons}>
+        <RosterButton />
+      </View>
+    </Layout>
   );
 };
 

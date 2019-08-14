@@ -1,5 +1,7 @@
 import React from 'react';
 import EStyleSheet from 'react-native-extended-stylesheet';
+import { mapping, light as lightTheme } from '@eva-design/eva';
+import { ApplicationProvider, Layout } from 'react-native-ui-kitten';
 
 import Home from './screens/Home';
 
@@ -12,4 +14,12 @@ EStyleSheet.build({
   // $outline: 1,
 });
 
-export default () => <Home />;
+const App = () => (
+  <ApplicationProvider mapping={mapping} theme={lightTheme}>
+    <Layout style={{ flex: 1 }}>
+      <Home />
+    </Layout>
+  </ApplicationProvider>
+);
+
+export default App;
