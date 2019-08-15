@@ -1,6 +1,6 @@
 import React from 'react';
-import { Dimensions, Image } from 'react-native';
-import { Layout, Text } from 'react-native-ui-kitten';
+import { View, Dimensions, ActivityIndicator } from 'react-native';
+import { Image, Text } from 'react-native-elements';
 
 import EStyleSheet from 'react-native-extended-stylesheet';
 
@@ -21,22 +21,30 @@ const styles = EStyleSheet.create({
   },
   text: {
     color: '$white',
-    fontSize: 24,
     fontWeight: '600',
+    paddingBottom: 10,
+    paddingTop: 10,
+  },
+  placeholder: {
+    backgroundColor: '#002147',
   },
 });
 
 const Team = () => {
   return (
-    <Layout style={styles.container}>
+    <View style={styles.container}>
       <Image
         style={styles.image}
         source={require('../images/pistons_primary_on_dark.png')}
+        PlaceholderContent={<ActivityIndicator size="large" color="#FFFFFF" />}
+        placeholderStyle={styles.placeholder}
       />
-      <Layout style={styles.textContainer}>
-        <Text style={styles.text}>Detroit Pistons</Text>
-      </Layout>
-    </Layout>
+      <View style={styles.textContainer}>
+        <Text h4 style={styles.text}>
+          Detroit Pistons
+        </Text>
+      </View>
+    </View>
   );
 };
 

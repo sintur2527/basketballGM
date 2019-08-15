@@ -21,12 +21,12 @@ const handlePress = () => {
   console.log('press Roster');
 };
 
-const RosterButton = props => {
+const FinanceButton = props => {
   return (
     <View style={styles.container}>
-      <Button style={styles.button} title="Roster" onPress={handlePress} />
+      <Button style={styles.button} title="Finances" onPress={handlePress} />
     </View>
   );
 };
 
-export default RosterButton;
+export default FinanceButton;

@@ -1,30 +1,39 @@
 import React from 'react';
 import { View, StatusBar } from 'react-native';
-import { Layout } from 'react-native-ui-kitten';
 
-import Header from '../components/Header';
+import NavBar from '../components/Header';
 import Team from '../components/Team';
 import RosterButton from '../components/RosterButton';
+import StatsButton from '../components/StatsButton';
+import ScheduleButton from '../components/ScheduleButton';
+import FinanceButton from '../components/FinanceButton';
 
 import EStyleSheet from 'react-native-extended-stylesheet';
 
 const styles = EStyleSheet.create({
   buttons: {
+    flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-around',
+    paddingTop: 10,
   },
 });
 
-const Home = props => {
+const Home = () => {
   return (
-    <Layout style={{ flex: 1 }}>
-      <StatusBar translucent={false} barStyle="default" />
-      <Header toggleTheme={props.toggleTheme} />
+    <View style={{ flex: 1 }}>
+      <StatusBar translucent={false} barStyle="light-content" />
+      <NavBar />
       <Team />
       <View style={styles.buttons}>
         <RosterButton />
+        <StatsButton />
+        <ScheduleButton />
+        <FinanceButton />
       </View>
-    </Layout>
+    </View>
   );
 };
 

@@ -18,15 +18,15 @@ const styles = EStyleSheet.create({
 });
 
 const handlePress = () => {
-  console.log('press Roster');
+  console.log('press Stats');
 };
 
-const RosterButton = props => {
+const StatsButton = props => {
   return (
     <View style={styles.container}>
-      <Button style={styles.button} title="Roster" onPress={handlePress} />
+      <Button style={styles.button} title="Team Stats" onPress={handlePress} />
     </View>
   );
 };
 
-export default RosterButton;
+export default StatsButton;
