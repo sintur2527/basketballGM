@@ -10,7 +10,7 @@ import Carousel from 'react-native-snap-carousel';
 
 import EStyleSheet from 'react-native-extended-stylesheet';
 
-import pistons from '../images/teamLogos/detroit_pistons.png';
+import logos from '../images/teamLogos/logos';
 
 const imageWidth = Dimensions.get('window').width;
 
@@ -35,7 +35,7 @@ const Selector = props => {
     navigation.navigate('Details');
   };
 
-  const data = [pistons];
+  const logoData = [logos.pistons, logos.nuggets, logos.nets, logos.kings];
 
   const renderItem = ({ item, index }) => {
     return (
@@ -58,11 +58,13 @@ const Selector = props => {
       ref={c => {
         this._carousel = c;
       }}
-      data={data}
+      data={logoData}
       renderItem={renderItem}
       layout={'default'}
       sliderWidth={imageWidth}
       itemWidth={imageWidth}
+      enableMomentum={true}
+      loop={true}
     />
   );
 };
