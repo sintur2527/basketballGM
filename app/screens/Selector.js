@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   View,
-  StatusBar,
   ActivityIndicator,
   Dimensions,
   TouchableOpacity,
