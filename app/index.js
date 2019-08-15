@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import EStyleSheet from 'react-native-extended-stylesheet';
+import { mapping, light, dark } from '@eva-design/eva';
+import { ApplicationProvider } from 'react-native-ui-kitten';
+import { ThemeProvider } from 'react-native-elements';
 
-import Home from './screens/Home';
+import AppNavigator from './config/routes';
 
 EStyleSheet.build({
   $primaryGray: 'gray',
@@ -9,7 +12,14 @@ EStyleSheet.build({
   $secondaryColor: '#FFC617',
 
   $white: '#FFFFFF',
-  // $outline: 1,
 });
 
-export default () => <Home />;
+const App = () => {
+  return (
+    <ThemeProvider>
+      <AppNavigator />
+    </ThemeProvider>
+  );
+};
+
+export default App;
