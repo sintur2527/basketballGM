@@ -1,6 +1,7 @@
 import { StatusBar } from 'react-native';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 
+import Selection from '../screens/Selection';
 import EasternSelector from '../screens/EasternSelector';
 import WesternSelector from '../screens/WesternSelector';
 import TeamDetails from '../screens/TeamDetails';
@@ -11,6 +12,12 @@ import Finances from '../screens/Finances';
 
 const SelectorStack = createStackNavigator(
   {
+    Selection: {
+      screen: Selection,
+      navigationOptions: () => ({
+        headerTitle: 'Choose a Conference',
+      }),
+    },
     Eastern: {
       screen: EasternSelector,
       navigationOptions: () => ({
