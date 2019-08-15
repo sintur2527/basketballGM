@@ -35,7 +35,7 @@ const Selector = props => {
     navigation.navigate('Details');
   };
 
-  const logoData = [logos.pistons, logos.nuggets, logos.nets, logos.kings];
+  const logoData = Object.values(logos);
 
   const renderItem = ({ item, index }) => {
     return (
@@ -64,7 +64,6 @@ const Selector = props => {
       sliderWidth={imageWidth}
       itemWidth={imageWidth}
       enableMomentum={true}
-      loop={true}
     />
   );
 };
