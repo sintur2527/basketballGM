@@ -6,9 +6,11 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { Image } from 'react-native-elements';
-import Swiper from 'react-native-swiper';
+import Carousel from 'react-native-snap-carousel';
 
 import EStyleSheet from 'react-native-extended-stylesheet';
+
+import logos from '../images/teamLogos/logos';
 
 const imageWidth = Dimensions.get('window').width;
 
@@ -33,53 +35,36 @@ const Selector = props => {
     navigation.navigate('Details');
   };
 
+  const logoData = Object.values(logos);
+
+  const renderItem = ({ item, index }) => {
+    return (
+      <View style={styles.container}>
+        <TouchableOpacity onPress={handleTeamPress}>
+          <Image
+            style={styles.image}
+            resizeMode="contain"
+            source={item}
+            PlaceholderContent={<ActivityIndicator size="large" />}
+            placeholderStyle={styles.placeholder}
+          />
+        </TouchableOpacity>
+      </View>
+    );
+  };
+
   return (
-    <Swiper showsButtons={true} showsPagination={false}>
-      <View style={styles.container}>
-        <TouchableOpacity onPress={handleTeamPress}>
-          <Image
-            style={styles.image}
-            resizeMode="contain"
-            source={require('../images/detroit_pistons.png')}
-            PlaceholderContent={<ActivityIndicator size="large" />}
-            placeholderStyle={styles.placeholder}
-          />
-        </TouchableOpacity>
-      </View>
-      <View style={styles.container}>
-        <TouchableOpacity onPress={handleTeamPress}>
-          <Image
-            style={styles.image}
-            resizeMode="contain"
-            source={require('../images/brooklyn-nets.png')}
-            PlaceholderContent={<ActivityIndicator size="large" />}
-            placeholderStyle={styles.placeholder}
-          />
-        </TouchableOpacity>
-      </View>
-      <View style={styles.container}>
-        <TouchableOpacity onPress={handleTeamPress}>
-          <Image
-            style={styles.image}
-            resizeMode="contain"
-            source={require('../images/denver_nuggets.png')}
-            PlaceholderContent={<ActivityIndicator size="large" />}
-            placeholderStyle={styles.placeholder}
-          />
-        </TouchableOpacity>
-      </View>
-      <View style={styles.container}>
-        <TouchableOpacity onPress={handleTeamPress}>
-          <Image
-            style={styles.image}
-            resizeMode="contain"
-            source={require('../images/sacramento_kings.png')}
-            PlaceholderContent={<ActivityIndicator size="large" />}
-            placeholderStyle={styles.placeholder}
-          />
-        </TouchableOpacity>
-      </View>
-    </Swiper>
+    <Carousel
+      ref={c => {
+        this._carousel = c;
+      }}
+      data={logoData}
+      renderItem={renderItem}
+      layout={'default'}
+      sliderWidth={imageWidth}
+      itemWidth={imageWidth}
+      enableMomentum={true}
+    />
   );
 };
 
