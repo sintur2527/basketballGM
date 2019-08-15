@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, SafeAreaView, StatusBar, ScrollView } from 'react-native';
+import { View, StatusBar, ScrollView, FlatList } from 'react-native';
 import { Text, ListItem } from 'react-native-elements';
 import { Calendar } from 'react-native-calendars';
 
@@ -15,19 +15,16 @@ const styles = EStyleSheet.create({
   },
 });
 
-const renderSchedule = () => {
+const keyExtractor = (item, index) => index.toString();
+
+const renderSchedule = ({ item }) => {
   return (
-    <ScrollView nestedScrollEnabled={true}>
-      {games.map((game, i) => (
-        <ListItem
-          key={i}
-          title={game.team}
-          leftAvatar={{ source: { uri: game.logo } }}
-          subtitle={`${game.stadium}, ${game.city}`}
-          bottomDivider={true}
-        />
-      ))}
-    </ScrollView>
+    <ListItem
+      title={item.team}
+      leftAvatar={{ source: { uri: item.logo } }}
+      subtitle={`${item.stadium}, ${item.city}`}
+      bottomDivider={true}
+    />
   );
 };
 
@@ -39,14 +36,18 @@ const markedDates = () => {
 
 const Schedule = () => {
   return (
-    <SafeAreaView>
+    <ScrollView>
       <StatusBar barStyle="default" />
       <Calendar current={'2019-10-23'} markedDates={markedDates()} />
       <Text h4 style={styles.text}>
         Upcoming Schedule
       </Text>
-      <View>{renderSchedule()}</View>
-    </SafeAreaView>
+      <FlatList
+        keyExtractor={keyExtractor}
+        data={games}
+        renderItem={renderSchedule}
+      />
+    </ScrollView>
   );
 };
 
