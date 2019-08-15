@@ -1,17 +1,45 @@
 import { StatusBar } from 'react-native';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 
-import Selector from '../screens/Selector';
+import Selection from '../screens/Selection';
+import EasternSelector from '../screens/EasternSelector';
+import WesternSelector from '../screens/WesternSelector';
 import TeamDetails from '../screens/TeamDetails';
 import Roster from '../screens/Roster';
 import Stats from '../screens/Stats';
 import Schedule from '../screens/Schedule';
 import Finances from '../screens/Finances';
 
+const SelectorStack = createStackNavigator(
+  {
+    Selection: {
+      screen: Selection,
+      navigationOptions: () => ({
+        headerTitle: 'Choose a Conference',
+      }),
+    },
+    Eastern: {
+      screen: EasternSelector,
+      navigationOptions: () => ({
+        headerTitle: 'Eastern Conference',
+      }),
+    },
+    Western: {
+      screen: WesternSelector,
+      navigationOptions: () => ({
+        headerTitle: 'Western Conference',
+      }),
+    },
+  },
+  {
+    headerMode: 'screen',
+  }
+);
+
 const AppNavigator = createStackNavigator(
   {
     Home: {
-      screen: Selector,
+      screen: SelectorStack,
       navigationOptions: {
         header: () => null,
       },
@@ -24,25 +52,25 @@ const AppNavigator = createStackNavigator(
     },
     Roster: {
       screen: Roster,
-      navigationOptions: ({ navigation }) => ({
+      navigationOptions: () => ({
         headerTitle: 'Roster',
       }),
     },
     Stats: {
       screen: Stats,
-      navigationOptions: ({ navigation }) => ({
+      navigationOptions: () => ({
         headerTitle: 'Team Stats',
       }),
     },
     Schedule: {
       screen: Schedule,
-      navigationOptions: ({ navigation }) => ({
+      navigationOptions: () => ({
         headerTitle: 'Team Schedule',
       }),
     },
     Finances: {
       screen: Finances,
-      navigationOptions: ({ navigation }) => ({
+      navigationOptions: () => ({
         headerTitle: 'Team Finances',
       }),
     },

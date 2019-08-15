@@ -10,7 +10,7 @@ import Carousel from 'react-native-snap-carousel';
 
 import EStyleSheet from 'react-native-extended-stylesheet';
 
-import logos from '../images/teamLogos/logos';
+import { western } from '../images/teamLogos/logos';
 
 const imageWidth = Dimensions.get('window').width;
 
@@ -29,13 +29,13 @@ const styles = EStyleSheet.create({
   },
 });
 
-const Selector = props => {
+const WesternSelector = props => {
   const handleTeamPress = () => {
     const { navigation } = props;
     navigation.navigate('Details');
   };
 
-  const logoData = Object.values(logos);
+  const westernLogos = Object.values(western);
 
   const renderItem = ({ item, index }) => {
     return (
@@ -58,7 +58,7 @@ const Selector = props => {
       ref={c => {
         this._carousel = c;
       }}
-      data={logoData}
+      data={westernLogos}
       renderItem={renderItem}
       layout={'default'}
       sliderWidth={imageWidth}
@@ -68,4 +68,4 @@ const Selector = props => {
   );
 };
 
-export default Selector;
+export default WesternSelector;
