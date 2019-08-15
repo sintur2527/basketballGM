@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StatusBar, ScrollView, FlatList } from 'react-native';
-import { Text, ListItem, Divider, Avatar } from 'react-native-elements';
+import { Text, Divider, Avatar } from 'react-native-elements';
 import { Calendar } from 'react-native-calendars';
 import moment from 'moment';
 
