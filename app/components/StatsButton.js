@@ -17,14 +17,14 @@ const styles = EStyleSheet.create({
   },
 });
 
-const handlePress = () => {
-  console.log('press Stats');
-};
-
 const StatsButton = props => {
   return (
     <View style={styles.container}>
-      <Button style={styles.button} title="Team Stats" onPress={handlePress} />
+      <Button
+        style={styles.button}
+        title="Team Stats"
+        onPress={props.onPress}
+      />
     </View>
   );
 };

@@ -21,17 +21,34 @@ const styles = EStyleSheet.create({
   },
 });
 
-const Home = () => {
+const Home = props => {
+  const handleRosterPress = () => {
+    const { navigation } = props;
+    navigation.navigate('Roster');
+  };
+  const handleStatsPress = () => {
+    const { navigation } = props;
+    navigation.navigate('Stats');
+  };
+  const handleSchedulePress = () => {
+    const { navigation } = props;
+    navigation.navigate('Schedule');
+  };
+  const handleFinancesPress = () => {
+    const { navigation } = props;
+    navigation.navigate('Finances');
+  };
+
   return (
     <View style={{ flex: 1 }}>
       <StatusBar translucent={false} barStyle="light-content" />
       <NavBar />
       <Team />
       <View style={styles.buttons}>
-        <RosterButton />
-        <StatsButton />
-        <ScheduleButton />
-        <FinanceButton />
+        <RosterButton onPress={handleRosterPress} />
+        <StatsButton onPress={handleStatsPress} />
+        <ScheduleButton onPress={handleSchedulePress} />
+        <FinanceButton onPress={handleFinancesPress} />
       </View>
     </View>
   );
