@@ -8,6 +8,8 @@ const styles = EStyleSheet.create({});
 const Roster = () => {
   const [roster, setRoster] = useState({});
 
+  useEffect(() => {});
+
   return (
     <View>
       <StatusBar barStyle="default" />
