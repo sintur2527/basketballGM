@@ -1,7 +1,8 @@
 import React from 'react';
 import { View, StatusBar, ScrollView, FlatList } from 'react-native';
-import { Text, ListItem } from 'react-native-elements';
+import { Text, ListItem, Divider, Avatar } from 'react-native-elements';
 import { Calendar } from 'react-native-calendars';
+import moment from 'moment';
 
 import games from '../config/games';
 
@@ -13,18 +14,54 @@ const styles = EStyleSheet.create({
     fontWeight: '600',
     textAlign: 'center',
   },
+  itemWrapper: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: 10,
+  },
+  titleWrapper: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  title: {
+    fontSize: 18,
+    fontWeight: '600',
+  },
+  date: {
+    color: '#7A8385',
+    fontSize: 14,
+    fontWeight: '600',
+  },
+  location: {
+    color: '#7A8385',
+    fontSize: 12,
+  },
 });
 
 const keyExtractor = (item, index) => index.toString();
 
 const renderSchedule = ({ item }) => {
   return (
-    <ListItem
-      title={item.team}
-      leftAvatar={{ source: { uri: item.logo } }}
-      subtitle={`${item.stadium}, ${item.city}`}
-      bottomDivider={true}
-    />
+    <View>
+      <View style={styles.itemWrapper}>
+        <Avatar
+          title={item.team[0]}
+          size="medium"
+          source={{ uri: item.logo }}
+        />
+        <View style={styles.titleWrapper}>
+          <Text style={styles.title}>{item.team}</Text>
+          <Text style={styles.date}>
+            {moment(item.date).format('dddd, MMM Do')}
+          </Text>
+          <Text style={styles.location}>{item.city}</Text>
+        </View>
+        <Text style={styles.title}>{`${item.time} ET`}</Text>
+      </View>
+      <Divider />
+    </View>
   );
 };
 
