@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { View, StatusBar, Text } from 'react-native';
+import { View, StatusBar, Text, ScrollView } from 'react-native';
+import { ListItem } from 'react-native-elements';
 import { API_KEY } from '../config/keys';
 
 import EStyleSheet from 'react-native-extended-stylesheet';
@@ -8,7 +9,7 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 const styles = EStyleSheet.create({});
 
 const Roster = () => {
-  const [roster, setRoster] = useState({});
+  const [roster, setRoster] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,13 +25,23 @@ const Roster = () => {
     fetchData();
   }, []);
 
-  console.log(roster);
-
   return (
-    <View>
+    <ScrollView>
       <StatusBar barStyle="default" />
-      <Text>This is the team Roster</Text>
-    </View>
+      {roster
+        ? roster.map((player, i) =>
+            player.leagues.standard &&
+            player.leagues.standard.active === '1' ? (
+              <ListItem
+                key={i}
+                title={`${player.firstName} ${player.lastName}`}
+                subtitle={`${player.leagues.standard.pos}`}
+                bottomDivider={true}
+              />
+            ) : null
+          )
+        : null}
+    </ScrollView>
   );
 };
 
