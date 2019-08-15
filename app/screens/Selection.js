@@ -1,6 +1,32 @@
 import React from 'react';
-import { View, TouchableOpacity } from 'react-native';
-import { Text } from 'react-native-elements';
+import {
+  View,
+  TouchableOpacity,
+  Dimensions,
+  ActivityIndicator,
+} from 'react-native';
+import { Card, Text, Image } from 'react-native-elements';
+
+import EStyleSheet from 'react-native-extended-stylesheet';
+
+const imageWidth = Dimensions.get('window').width;
+
+const styles = EStyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+  },
+  placeholder: {
+    backgroundColor: '$white',
+  },
+  image: {
+    width: imageWidth,
+    height: imageWidth / 2,
+    marginTop: 15,
+    marginBottom: 15,
+  },
+});
 
 const Selection = props => {
   const handleEasternPress = () => {
@@ -14,12 +40,24 @@ const Selection = props => {
   };
 
   return (
-    <View>
+    <View style={styles.container}>
       <TouchableOpacity onPress={handleEasternPress}>
-        <Text>Eastern Conference</Text>
+        <Image
+          style={styles.image}
+          resizeMode="contain"
+          source={require('../images/eastern_conference.png')}
+          PlaceholderContent={<ActivityIndicator />}
+          placeholderStyle={styles.placeholder}
+        />
       </TouchableOpacity>
       <TouchableOpacity onPress={handleWesternPress}>
-        <Text>Western Conference</Text>
+        <Image
+          style={styles.image}
+          resizeMode="contain"
+          source={require('../images/western_conference.png')}
+          PlaceholderContent={<ActivityIndicator />}
+          placeholderStyle={styles.placeholder}
+        />
       </TouchableOpacity>
     </View>
   );
