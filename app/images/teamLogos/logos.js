@@ -20,7 +20,7 @@ const western = {
   mavericks: require('./dallas_mavericks.png'),
   nuggets: require('./denver_nuggets.png'),
   warriors: require('./gs_warriors.png'),
-  rockets: require('./houston_rockets.gif'),
+  rockets: require('./houston_rockets.png'),
   clippers: require('./la_clippers.png'),
   lakers: require('./la_lakers.png'),
   grizzlies: require('./memphis_grizzlies.png'),
