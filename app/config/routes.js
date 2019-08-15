@@ -1,7 +1,8 @@
 import { StatusBar } from 'react-native';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 
-import Home from '../screens/Home';
+import Selector from '../screens/Selector';
+import TeamDetails from '../screens/TeamDetails';
 import Roster from '../screens/Roster';
 import Stats from '../screens/Stats';
 import Schedule from '../screens/Schedule';
@@ -10,7 +11,13 @@ import Finances from '../screens/Finances';
 const AppNavigator = createStackNavigator(
   {
     Home: {
-      screen: Home,
+      screen: Selector,
+      navigationOptions: {
+        header: () => null,
+      },
+    },
+    Details: {
+      screen: TeamDetails,
       navigationOptions: {
         header: () => null,
       },

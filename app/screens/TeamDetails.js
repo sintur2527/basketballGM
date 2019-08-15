@@ -21,7 +21,7 @@ const styles = EStyleSheet.create({
   },
 });
 
-const Home = props => {
+const TeamDetails = props => {
   const handleRosterPress = () => {
     const { navigation } = props;
     navigation.navigate('Roster');
@@ -54,4 +54,4 @@ const Home = props => {
   );
 };
 
-export default Home;
+export default TeamDetails;

@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, StatusBar, Text } from 'react-native';
+import { View, StatusBar } from 'react-native';
+import { Text } from 'react-native-elements';
 
 import EStyleSheet from 'react-native-extended-stylesheet';
 
@@ -9,7 +10,9 @@ const Schedule = () => {
   return (
     <View>
       <StatusBar barStyle="default" />
-      <Text>This is the team Schedule</Text>
+      <Text>Calendar</Text>
+
+      <Text>Upcoming Schedule</Text>
     </View>
   );
 };
