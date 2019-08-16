@@ -65,7 +65,7 @@ const DetailsStack = createStackNavigator(
     Finances: {
       screen: Finances,
       navigationOptions: () => ({
-        headerTitle: 'Team Payroll',
+        headerTitle: 'Team Contracts',
       }),
     },
   },
