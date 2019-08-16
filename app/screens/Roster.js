@@ -10,12 +10,6 @@ const styles = EStyleSheet.create({
   container: {
     flex: 1,
   },
-  name: {
-    fontWeight: '600',
-  },
-  position: {
-    color: '#7A8385',
-  },
   headerStyle: {
     height: 50,
     backgroundColor: '$primaryColor',
