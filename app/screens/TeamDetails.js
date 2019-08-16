@@ -1,6 +1,12 @@
-import React, { useState } from 'react';
-import { View, StatusBar, Dimensions, TouchableOpacity } from 'react-native';
-import { Text, Button, Avatar, Divider } from 'react-native-elements';
+import React, { useState, Fragment } from 'react';
+import {
+  View,
+  StatusBar,
+  Dimensions,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native';
+import { Text, Button, Avatar, Divider, Overlay } from 'react-native-elements';
 import moment from 'moment';
 
 import NavBar from '../components/Header';
@@ -94,10 +100,55 @@ const styles = EStyleSheet.create({
     backgroundColor: '#0046ae',
     marginBottom: 10,
   },
+  overlay: {
+    alignItems: 'center',
+  },
+  overlayStats: {
+    flexDirection: 'row',
+    alignItems: 'stretch',
+    justifyContent: 'space-around',
+  },
+  container: {
+    alignItems: 'center',
+  },
+  overlayButton: {
+    width: imageWidth / 2,
+    backgroundColor: '#0046ae',
+    marginBottom: 10,
+  },
+  overlayTitle: {
+    color: '#002147',
+    fontSize: 25,
+    fontWeight: '800',
+    letterSpacing: 1.5,
+  },
+  overlayScore: {
+    color: '#002147',
+    fontSize: 48,
+    fontWeight: '900',
+  },
+  overlayTeams: {
+    color: '#7A8385',
+    fontSize: 14,
+    fontWeight: '600',
+  },
+  statsLabels: {
+    fontWeight: '600',
+    fontSize: 16,
+    paddingTop: 15,
+    paddingBottom: 15,
+  },
+  statsText: {
+    fontWeight: '400',
+    fontSize: 18,
+    paddingTop: 15,
+    paddingBottom: 15,
+  },
 });
 
 const TeamDetails = props => {
   const nextGames = games;
+
   // State
   const [nextTeam, setNextTeam] = useState(nextGames[0]);
 
@@ -108,8 +159,24 @@ const TeamDetails = props => {
   const [awayScore, setAwayScore] = useState(0);
   const [homeScore, setHomeScore] = useState(0);
 
+  const [awayFgm, setAwayFgm] = useState(0);
+  const [awayFga, setAwayFga] = useState(0);
+  const [awayReb, setAwayReb] = useState(0);
+  const [awayAst, setAwayAst] = useState(0);
+  const [awayStl, setAwayStl] = useState(0);
+  const [awayBlk, setAwayBlk] = useState(0);
+
+  const [homeFgm, setHomeFgm] = useState(0);
+  const [homeFga, setHomeFga] = useState(0);
+
+  const [homeReb, setHomeReb] = useState(0);
+  const [homeAst, setHomeAst] = useState(0);
+  const [homeStl, setHomeStl] = useState(0);
+  const [homeBlk, setHomeBlk] = useState(0);
+
   const [simButton, setSimButton] = useState(false);
   const [nextButton, setNextButton] = useState(true);
+  const [overlay, setOverlay] = useState(false);
 
   const handleRosterPress = () => {
     const { navigation } = props;
@@ -132,8 +199,11 @@ const TeamDetails = props => {
   };
 
   const handleScorePress = () => {
-    const { navigation } = props;
-    navigation.navigate('Box');
+    setOverlay(true);
+  };
+
+  const handleBoxClose = () => {
+    setOverlay(false);
   };
 
   const getRandomInt = (min, max) => {
@@ -238,6 +308,54 @@ const TeamDetails = props => {
             }>{`${awayScore} - ${homeScore}`}</Text>
         </View>
       </TouchableOpacity>
+      <Overlay isVisible={overlay} onBackdropPress={() => setOverlay(false)}>
+        <View style={styles.overlay}>
+          <Text style={styles.overlayTitle}>Final Stats</Text>
+          <View style={styles.overlayStats}>
+            <ScrollView
+              contentContainerStyle={styles.container}
+              scrollEnabled={false}>
+              <Text style={styles.overlayScore}>{awayScore}</Text>
+              <Text style={styles.overlayTeams}>
+                {nextTeam.team.split(' ')[1]}
+              </Text>
+              <Text style={styles.statsText}>{`${awayFga} - ${awayFgm}`}</Text>
+              <Text style={styles.statsText}>{awayReb}</Text>
+              <Text style={styles.statsText}>{awayAst}</Text>
+              <Text style={styles.statsText}>{awayStl}</Text>
+              <Text style={styles.statsText}>{awayBlk}</Text>
+            </ScrollView>
+            <ScrollView
+              contentContainerStyle={styles.container}
+              scrollEnabled={false}>
+              <Text style={styles.overlayScore}>{'-'}</Text>
+              <Text style={styles.overlayTeams}>{'-'}</Text>
+              <Text style={styles.statsLabels}>{`FGM - FGA`}</Text>
+              <Text style={styles.statsLabels}>{'REB'}</Text>
+              <Text style={styles.statsLabels}>{'AST'}</Text>
+              <Text style={styles.statsLabels}>{'STL'}</Text>
+              <Text style={styles.statsLabels}>{'BLK'}</Text>
+            </ScrollView>
+            <ScrollView
+              contentContainerStyle={styles.container}
+              scrollEnabled={false}>
+              <Text style={styles.overlayScore}>{homeScore}</Text>
+              <Text style={styles.overlayTeams}>{'Pistons'}</Text>
+              <Text style={styles.statsText}>{`${homeFga} - ${homeFgm}`}</Text>
+              <Text style={styles.statsText}>{homeReb}</Text>
+              <Text style={styles.statsText}>{homeAst}</Text>
+              <Text style={styles.statsText}>{homeStl}</Text>
+              <Text style={styles.statsText}>{homeBlk}</Text>
+            </ScrollView>
+          </View>
+        </View>
+        <Button
+          containerStyle={styles.buttonContainer}
+          buttonStyle={styles.overlayButton}
+          title="Close"
+          onPress={handleBoxClose}
+        />
+      </Overlay>
       <Button
         containerStyle={styles.buttonContainer}
         buttonStyle={styles.button}
