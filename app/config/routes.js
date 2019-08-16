@@ -71,7 +71,7 @@ const AppNavigator = createStackNavigator(
     Finances: {
       screen: Finances,
       navigationOptions: () => ({
-        headerTitle: 'Team Finances',
+        headerTitle: 'Team Payroll',
       }),
     },
   },
