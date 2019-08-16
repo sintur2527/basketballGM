@@ -1,11 +1,11 @@
 const eastern = {
-  pistons: require('./detroit_pistons.png'),
   hawks: require('./atlanta_hawks.png'),
   celtics: require('./boston_celtics.png'),
   nets: require('./brooklyn_nets.png'),
   hornets: require('./charlotte_hornets.png'),
   bulls: require('./chicago_bulls.png'),
   cavaliers: require('./cleveland_cavaliers.png'),
+  pistons: require('./detroit_pistons.png'),
   pacers: require('./indiana_pacers.png'),
   heat: require('./miami_heat.gif'),
   bucks: require('./milwaukee_bucks.png'),
