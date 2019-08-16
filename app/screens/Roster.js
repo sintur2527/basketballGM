@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { View, StatusBar, Text, ScrollView, FlatList } from 'react-native';
-import { ListItem } from 'react-native-elements';
-import { Table, TableWrapper, Row } from 'react-native-table-component';
+import React from 'react';
+import { View, StatusBar, ScrollView } from 'react-native';
+import { Table, Row } from 'react-native-table-component';
 
 import { pistons } from '../config/roster';
 
@@ -9,16 +8,34 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 
 const styles = EStyleSheet.create({
   container: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingTop: 10,
-    paddingBottom: 10,
+    flex: 1,
   },
   name: {
     fontWeight: '600',
   },
   position: {
     color: '#7A8385',
+  },
+  headerStyle: {
+    height: 50,
+    backgroundColor: '$primaryColor',
+  },
+  headerText: {
+    textAlign: 'center',
+    fontWeight: '600',
+    paddingTop: 10,
+    paddingBottom: 10,
+    fontSize: 20,
+    color: '$white',
+  },
+  row: {
+    height: 40,
+  },
+  rowText: {
+    textAlign: 'center',
+    fontSize: 14,
+    paddingTop: 10,
+    paddingBottom: 10,
   },
 });
 
@@ -37,7 +54,7 @@ const Roster = () => {
     'PPG',
   ];
 
-  const widthArr = [200, 60, 80, 60, 60, 60, 60, 60, 60, 60, 60];
+  const widthArr = [200, 60, 120, 60, 60, 60, 60, 60, 60, 60, 60];
 
   const rowData = pistons.map(player => {
     return [
@@ -56,17 +73,32 @@ const Roster = () => {
   });
 
   return (
-    <View>
+    <View style={styles.container}>
       <StatusBar barStyle="default" />
       <ScrollView horizontal={true}>
         <View>
-          <Table>
-            <Row data={tableHead} widthArr={widthArr} />
+          <Table
+            borderStyle={{
+              borderWidth: 1,
+              borderColor: '#FFF',
+            }}>
+            <Row
+              data={tableHead}
+              widthArr={widthArr}
+              style={styles.headerStyle}
+              textStyle={styles.headerText}
+            />
           </Table>
           <ScrollView>
-            <Table>
+            <Table borderStyle={{ borderWidth: 1, borderColor: '#FFF' }}>
               {rowData.map((row, i) => (
-                <Row key={i} data={row} widthArr={widthArr} />
+                <Row
+                  key={i}
+                  data={row}
+                  widthArr={widthArr}
+                  style={styles.row}
+                  textStyle={styles.rowText}
+                />
               ))}
             </Table>
           </ScrollView>
