@@ -49,12 +49,6 @@ const styles = EStyleSheet.create({
     marginTop: 5,
     marginBottom: 5,
   },
-  itemWrapperWin: {
-    backgroundColor: '#4BB543',
-  },
-  itemWrapperLoss: {
-    backgroundColor: '#FC100D',
-  },
   titleWrapper: {
     flexDirection: 'column',
     alignItems: 'center',
@@ -66,10 +60,10 @@ const styles = EStyleSheet.create({
     color: '#002147',
   },
   titleWin: {
-    color: '$white',
+    color: '#4BB543',
   },
   titleLoss: {
-    color: '$white',
+    color: '#FC100D',
   },
   date: {
     color: '#7A8385',
@@ -77,20 +71,20 @@ const styles = EStyleSheet.create({
     fontWeight: '600',
   },
   dateWin: {
-    color: '$white',
+    color: '#86C182',
   },
   dateLoss: {
-    color: '$white',
+    color: '#FD5B59',
   },
   location: {
     color: '#7A8385',
     fontSize: 12,
   },
   locationWin: {
-    color: '$white',
+    color: '#86C182',
   },
   locationLoss: {
-    color: '$white',
+    color: '#FD5B59',
   },
   buttonContainer: {
     alignItems: 'center',
@@ -195,14 +189,7 @@ const TeamDetails = props => {
       <Divider />
       <Text style={styles.upcoming}>Upcoming</Text>
       <TouchableOpacity>
-        <View
-          style={
-            win > 0
-              ? [styles.itemWrapper, styles.itemWrapperWin]
-              : win === 0
-              ? styles.itemWrapper
-              : [styles.itemWrapper, styles.itemWrapperLoss]
-          }>
+        <View style={styles.itemWrapper}>
           <Avatar size="medium" source={{ uri: nextTeam.logo }} />
           <View style={styles.titleWrapper}>
             <Text
