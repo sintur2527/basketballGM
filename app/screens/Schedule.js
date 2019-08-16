@@ -11,8 +11,10 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 const styles = EStyleSheet.create({
   text: {
     paddingTop: 15,
+    paddingBottom: 15,
     fontWeight: '600',
     textAlign: 'center',
+    color: '#0046ae',
   },
   itemWrapper: {
     flexDirection: 'row',
@@ -28,6 +30,7 @@ const styles = EStyleSheet.create({
   title: {
     fontSize: 18,
     fontWeight: '600',
+    color: '#002147',
   },
   date: {
     color: '#7A8385',
@@ -67,7 +70,14 @@ const renderSchedule = ({ item }) => {
 
 const markedDates = () => {
   let dates = {};
-  games.map((game, i) => (dates[game.date] = { marked: true }));
+  games.map(
+    (game, i) => (dates[game.date] = { marked: true, dotColor: '#0046ae' })
+  );
+  dates[games[0].date] = {
+    selected: true,
+    marked: true,
+    selectedColor: '#0046ae',
+  };
   return dates;
 };
 
@@ -75,7 +85,16 @@ const Schedule = () => {
   return (
     <ScrollView>
       <StatusBar barStyle="default" />
-      <Calendar current={'2019-10-23'} markedDates={markedDates()} />
+      <Calendar
+        current={'2019-10-23'}
+        markedDates={markedDates()}
+        theme={{
+          arrowColor: '#0046ae',
+          monthTextColor: '#0046ae',
+          textMonthFontWeight: '600',
+        }}
+      />
+      <Divider />
       <Text h4 style={styles.text}>
         Upcoming Schedule
       </Text>
