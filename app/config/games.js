@@ -1,7 +1,7 @@
 const games = [
   {
     date: '2019-10-23',
-    team: '@ Indiana Pacers',
+    team: 'Indiana Pacers',
     logo:
       'http://content.sportslogos.net/logos/6/224/full/4812_indiana_pacers-primary-2018.png',
     location: 'Away',
@@ -41,7 +41,7 @@ const games = [
   },
   {
     date: '2019-10-30',
-    team: '@ Toronto Raptors',
+    team: 'Toronto Raptors',
     logo:
       'http://content.sportslogos.net/logos/6/227/full/4578_toronto_raptors-primary-2016.png',
     location: 'Away',
@@ -71,7 +71,7 @@ const games = [
   },
   {
     date: '2019-11-04',
-    team: '@ Washington Wizards',
+    team: 'Washington Wizards',
     logo:
       'http://content.sportslogos.net/logos/6/219/full/5671_washington_wizards-primary-2016.png',
     location: 'Away',
@@ -91,7 +91,7 @@ const games = [
   },
   {
     date: '2019-11-08',
-    team: '@ Indiana Pacers',
+    team: 'Indiana Pacers',
     logo:
       'http://content.sportslogos.net/logos/6/224/full/4812_indiana_pacers-primary-2018.png',
     location: 'Away',
