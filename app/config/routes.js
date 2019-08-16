@@ -9,7 +9,6 @@ import Roster from '../screens/Roster';
 import Stats from '../screens/Stats';
 import Schedule from '../screens/Schedule';
 import Finances from '../screens/Finances';
-import BoxScore from '../screens/BoxScore';
 
 const SelectorStack = createStackNavigator(
   {
