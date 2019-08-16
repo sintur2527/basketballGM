@@ -134,7 +134,7 @@ const styles = EStyleSheet.create({
   },
   statsLabels: {
     fontWeight: '600',
-    fontSize: 16,
+    fontSize: 18,
     paddingTop: 15,
     paddingBottom: 15,
   },
@@ -212,9 +212,19 @@ const TeamDetails = props => {
     return Math.floor(Math.random() * (max - min)) + min;
   };
 
-  const handleSimulatePress = () => {
+  const simulateGame = () => {
     let away = getRandomInt(90, 121);
     let home = getRandomInt(90, 121);
+
+    let awayRebound = getRandomInt(45, 61);
+    let awayAssist = getRandomInt(20, 31);
+    let awaySteal = getRandomInt(5, 15);
+    let awayBlock = getRandomInt(2, 8);
+
+    let homeRebound = getRandomInt(45, 61);
+    let homeAssist = getRandomInt(20, 31);
+    let homeSteal = getRandomInt(5, 15);
+    let homeBlock = getRandomInt(2, 8);
 
     if (away === home) {
       getRandomInt(0, 2) === 0 ? away + 10 : home + 10;
@@ -223,6 +233,16 @@ const TeamDetails = props => {
     setAwayScore(away);
     setHomeScore(home);
 
+    setAwayReb(awayRebound);
+    setAwayAst(awayAssist);
+    setAwayStl(awaySteal);
+    setAwayBlk(awayBlock);
+
+    setHomeReb(homeRebound);
+    setHomeAst(homeAssist);
+    setHomeStl(homeSteal);
+    setHomeBlk(homeBlock);
+
     if (away > home) {
       setLosses(losses + 1);
       setWin(-1);
@@ -230,6 +250,10 @@ const TeamDetails = props => {
       setWins(wins + 1);
       setWin(1);
     }
+  };
+
+  const handleSimulatePress = () => {
+    simulateGame();
 
     setSimButton(true);
     setNextButton(false);
