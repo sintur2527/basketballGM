@@ -1,5 +1,3 @@
-import { ModuleMap } from 'jest-haste-map';
-
 const roster = {
   pistons: [
     {

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { View, StatusBar, Text, ScrollView } from 'react-native';
+import { View, StatusBar, Text, ScrollView, FlatList } from 'react-native';
 import { ListItem } from 'react-native-elements';
-import { API_KEY } from '../config/keys';
+import { Table, TableWrapper, Row } from 'react-native-table-component';
+
+import { pistons } from '../config/roster';
 
 import EStyleSheet from 'react-native-extended-stylesheet';
 
@@ -22,42 +23,56 @@ const styles = EStyleSheet.create({
 });
 
 const Roster = () => {
-  const [roster, setRoster] = useState();
+  const tableHead = [
+    'Name',
+    'Age',
+    'Position',
+    'MPG',
+    'FG%',
+    '3P%',
+    'FT%',
+    'RPG',
+    'BPG',
+    'APG',
+    'PPG',
+  ];
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const results = await axios({
-  //       url: `https://api-nba-v1.p.rapidapi.com/players/teamId/10`,
-  //       method: 'GET',
-  //       headers: {
-  //         'x-rapidapi-key': API_KEY,
-  //       },
-  //     });
-  //     setRoster(results.data.api.players);
-  //   };
-  //   fetchData();
-  // }, []);
+  const widthArr = [200, 60, 80, 60, 60, 60, 60, 60, 60, 60, 60];
+
+  const rowData = pistons.map(player => {
+    return [
+      player.name,
+      player.age,
+      player.position,
+      player.stats.mpg,
+      player.stats.fg,
+      player.stats.three,
+      player.stats.ft,
+      player.stats.rpg,
+      player.stats.bpg,
+      player.stats.apg,
+      player.stats.ppg,
+    ];
+  });
 
   return (
-    <ScrollView>
+    <View>
       <StatusBar barStyle="default" />
-      {roster
-        ? roster.map((player, i) =>
-            player.leagues.standard &&
-            player.leagues.standard.active === '1' ? (
-              <ListItem
-                key={i}
-                contentContainerStyle={styles.container}
-                title={`${player.firstName} ${player.lastName}`}
-                titleStyle={styles.name}
-                subtitle={`${player.leagues.standard.pos}`}
-                subtitleStyle={styles.position}
-                bottomDivider={true}
-              />
-            ) : null
-          )
-        : null}
-    </ScrollView>
+      <ScrollView horizontal={true}>
+        <View>
+          <Table>
+            <Row data={tableHead} widthArr={widthArr} />
+          </Table>
+          <ScrollView>
+            <Table>
+              {rowData.map((row, i) => (
+                <Row key={i} data={row} widthArr={widthArr} />
+              ))}
+            </Table>
+          </ScrollView>
+        </View>
+      </ScrollView>
+    </View>
   );
 };
 
