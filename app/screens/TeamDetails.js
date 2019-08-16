@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, StatusBar, Dimensions } from 'react-native';
-import { Text, Button, Avatar } from 'react-native-elements';
+import { Text, Button, Avatar, Divider } from 'react-native-elements';
 import moment from 'moment';
 
 import NavBar from '../components/Header';
@@ -39,6 +39,7 @@ const styles = EStyleSheet.create({
     fontWeight: '600',
     textAlign: 'center',
     fontSize: 20,
+    paddingTop: 10,
   },
   itemWrapper: {
     flexDirection: 'row',
@@ -71,6 +72,7 @@ const styles = EStyleSheet.create({
   button: {
     width: imageWidth * 0.9,
     backgroundColor: '#0046ae',
+    marginBottom: 10,
   },
 });
 
@@ -115,20 +117,27 @@ const TeamDetails = props => {
   };
 
   const handleSimulatePress = () => {
-    console.log('simulate game');
     let away = getRandomInt(90, 121);
     let home = getRandomInt(90, 121);
+
     if (away === home) {
       getRandomInt(0, 2) === 0 ? away + 10 : home + 10;
     }
 
     setAwayScore(away);
     setHomeScore(home);
+
     if (away > home) {
       setLosses(losses + 1);
     } else {
       setWins(wins + 1);
     }
+
+    setSimButton(true);
+  };
+
+  const handleNextPress = () => {
+    setSimButton(true);
   };
 
   return (
@@ -147,6 +156,7 @@ const TeamDetails = props => {
         <ScheduleButton onPress={handleSchedulePress} />
         <FinanceButton onPress={handleFinancesPress} />
       </View>
+      <Divider />
       <Text style={styles.nextGame}>Next Game</Text>
       <View>
         <View style={styles.itemWrapper}>
@@ -164,8 +174,15 @@ const TeamDetails = props => {
       <Button
         containerStyle={styles.buttonContainer}
         buttonStyle={styles.button}
+        disabled={simButton}
         title="Simulate Game"
         onPress={() => handleSimulatePress()}
+      />
+      <Button
+        containerStyle={styles.buttonContainer}
+        buttonStyle={styles.button}
+        title="Next Game"
+        onPress={() => handleNextPress()}
       />
     </View>
   );
