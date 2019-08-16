@@ -157,7 +157,7 @@ const TeamDetails = props => {
         <FinanceButton onPress={handleFinancesPress} />
       </View>
       <Divider />
-      <Text style={styles.nextGame}>Next Game</Text>
+      <Text style={styles.nextGame}>Upcoming</Text>
       <View>
         <View style={styles.itemWrapper}>
           <Avatar size="medium" source={{ uri: nextTeam.logo }} />
