@@ -60,7 +60,6 @@ buck-out/
 
 # os files
 /android
-/ios
 
 # package-lock
 package-lock.json
