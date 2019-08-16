@@ -1,63 +1,104 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { View, StatusBar, Text, ScrollView } from 'react-native';
-import { ListItem } from 'react-native-elements';
-import { API_KEY } from '../config/keys';
+import React from 'react';
+import { View, StatusBar, ScrollView } from 'react-native';
+import { Table, Row } from 'react-native-table-component';
+
+import { pistons } from '../config/roster';
 
 import EStyleSheet from 'react-native-extended-stylesheet';
 
 const styles = EStyleSheet.create({
   container: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flex: 1,
+  },
+  headerStyle: {
+    height: 50,
+    backgroundColor: '$primaryColor',
+  },
+  headerText: {
+    textAlign: 'center',
+    fontWeight: '600',
     paddingTop: 10,
     paddingBottom: 10,
+    fontSize: 20,
+    color: '$white',
   },
-  name: {
-    fontWeight: '600',
+  row: {
+    height: 40,
   },
-  position: {
-    color: '#7A8385',
+  rowText: {
+    textAlign: 'center',
+    fontSize: 14,
+    paddingTop: 10,
+    paddingBottom: 10,
   },
 });
 
 const Roster = () => {
-  const [roster, setRoster] = useState();
+  const tableHead = [
+    'Name',
+    'Age',
+    'Position',
+    'MPG',
+    'FG%',
+    '3P%',
+    'FT%',
+    'RPG',
+    'BPG',
+    'APG',
+    'PPG',
+  ];
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const results = await axios({
-  //       url: `https://api-nba-v1.p.rapidapi.com/players/teamId/10`,
-  //       method: 'GET',
-  //       headers: {
-  //         'x-rapidapi-key': API_KEY,
-  //       },
-  //     });
-  //     setRoster(results.data.api.players);
-  //   };
-  //   fetchData();
-  // }, []);
+  const widthArr = [200, 60, 120, 60, 60, 60, 60, 60, 60, 60, 60];
+
+  const rowData = pistons.map(player => {
+    return [
+      player.name,
+      player.age,
+      player.position,
+      player.stats.mpg,
+      player.stats.fg,
+      player.stats.three,
+      player.stats.ft,
+      player.stats.rpg,
+      player.stats.bpg,
+      player.stats.apg,
+      player.stats.ppg,
+    ];
+  });
 
   return (
-    <ScrollView>
+    <View style={styles.container}>
       <StatusBar barStyle="default" />
-      {roster
-        ? roster.map((player, i) =>
-            player.leagues.standard &&
-            player.leagues.standard.active === '1' ? (
-              <ListItem
-                key={i}
-                contentContainerStyle={styles.container}
-                title={`${player.firstName} ${player.lastName}`}
-                titleStyle={styles.name}
-                subtitle={`${player.leagues.standard.pos}`}
-                subtitleStyle={styles.position}
-                bottomDivider={true}
-              />
-            ) : null
-          )
-        : null}
-    </ScrollView>
+      <ScrollView horizontal={true}>
+        <View>
+          <Table
+            borderStyle={{
+              borderWidth: 1,
+              borderColor: '#FFF',
+            }}>
+            <Row
+              data={tableHead}
+              widthArr={widthArr}
+              style={styles.headerStyle}
+              textStyle={styles.headerText}
+            />
+          </Table>
+          <ScrollView>
+            <Table borderStyle={{ borderWidth: 1, borderColor: '#FFF' }}>
+              {rowData.map((row, i) => (
+                <Row
+                  key={i}
+                  data={row}
+                  widthArr={widthArr}
+                  style={styles.row}
+                  textStyle={styles.rowText}
+                />
+              ))}
+            </Table>
+          </ScrollView>
+        </View>
+      </ScrollView>
+    </View>
   );
 };
 

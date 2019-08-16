@@ -1,5 +1,3 @@
-import pacers from '../images/teamLogos/indiana_pacers.png';
-
 const games = [
   {
     date: '2019-10-23',
