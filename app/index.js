@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import EStyleSheet from 'react-native-extended-stylesheet';
-import { mapping, light, dark } from '@eva-design/eva';
-import { ApplicationProvider } from 'react-native-ui-kitten';
 import { ThemeProvider } from 'react-native-elements';
 
 import AppNavigator from './config/routes';
