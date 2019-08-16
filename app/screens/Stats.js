@@ -58,7 +58,7 @@ const Stats = () => {
     'PF',
   ];
 
-  const widthArr = [200, 80, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60];
+  const widthArr = [200, 90, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70];
 
   const rowData = pistons.map(split => {
     return [
