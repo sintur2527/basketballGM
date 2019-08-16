@@ -78,7 +78,6 @@ const styles = EStyleSheet.create({
 
 const TeamDetails = props => {
   const nextGames = games;
-  // const nextTeam = nextGames[0];
   // State
   const [nextTeam, setNextTeam] = useState(nextGames[0]);
 
@@ -89,6 +88,7 @@ const TeamDetails = props => {
   const [homeScore, setHomeScore] = useState(0);
 
   const [simButton, setSimButton] = useState(false);
+  const [nextButton, setNextButton] = useState(true);
 
   const handleRosterPress = () => {
     const { navigation } = props;
@@ -134,10 +134,16 @@ const TeamDetails = props => {
     }
 
     setSimButton(true);
+    setNextButton(false);
   };
 
   const handleNextPress = () => {
     setSimButton(false);
+    setAwayScore(0);
+    setHomeScore(0);
+    nextGames.shift();
+    setNextTeam(nextGames[0]);
+    setNextButton(true);
   };
 
   return (
@@ -181,6 +187,7 @@ const TeamDetails = props => {
       <Button
         containerStyle={styles.buttonContainer}
         buttonStyle={styles.button}
+        disabled={nextButton}
         title="Next Game"
         onPress={() => handleNextPress()}
       />
