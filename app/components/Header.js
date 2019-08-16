@@ -15,6 +15,7 @@ const NavBar = () => {
   return (
     <Header
       backgroundColor="#0046ae"
+      leftComponent={{ icon: 'menu', color: '#FFFFFF' }}
       centerComponent={{
         text: 'My Team',
         style: styles.title,
