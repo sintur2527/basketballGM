@@ -90,7 +90,7 @@ const Roster = () => {
                   key={i}
                   data={row}
                   widthArr={widthArr}
-                  style={styles.row}
+                  style={[styles.row, i % 2 && { backgroundColor: '#EBFCFF' }]}
                   textStyle={styles.rowText}
                 />
               ))}

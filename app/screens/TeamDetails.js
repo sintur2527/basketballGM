@@ -137,7 +137,7 @@ const TeamDetails = props => {
   };
 
   const handleNextPress = () => {
-    setSimButton(true);
+    setSimButton(false);
   };
 
   return (
