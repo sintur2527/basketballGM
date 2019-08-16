@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, StatusBar, Dimensions } from 'react-native';
+import { View, StatusBar, Dimensions, TouchableOpacity } from 'react-native';
 import { Text, Button, Avatar, Divider } from 'react-native-elements';
 import moment from 'moment';
 
@@ -68,6 +68,9 @@ const styles = EStyleSheet.create({
   titleWin: {
     color: '$white',
   },
+  titleLoss: {
+    color: '$white',
+  },
   date: {
     color: '#7A8385',
     fontSize: 14,
@@ -76,11 +79,17 @@ const styles = EStyleSheet.create({
   dateWin: {
     color: '$white',
   },
+  dateLoss: {
+    color: '$white',
+  },
   location: {
     color: '#7A8385',
     fontSize: 12,
   },
   locationWin: {
+    color: '$white',
+  },
+  locationLoss: {
     color: '$white',
   },
   buttonContainer: {
@@ -100,7 +109,7 @@ const TeamDetails = props => {
 
   const [wins, setWins] = useState(0);
   const [losses, setLosses] = useState(0);
-  const [win, setWin] = useState();
+  const [win, setWin] = useState(0);
 
   const [awayScore, setAwayScore] = useState(0);
   const [homeScore, setHomeScore] = useState(0);
@@ -147,10 +156,10 @@ const TeamDetails = props => {
 
     if (away > home) {
       setLosses(losses + 1);
-      setWin(false);
+      setWin(-1);
     } else {
       setWins(wins + 1);
-      setWin(true);
+      setWin(1);
     }
 
     setSimButton(true);
@@ -161,7 +170,7 @@ const TeamDetails = props => {
     setSimButton(false);
     setAwayScore(0);
     setHomeScore(0);
-    setWin();
+    setWin(0);
     nextGames.shift();
     setNextTeam(nextGames[0]);
     setNextButton(true);
@@ -185,24 +194,58 @@ const TeamDetails = props => {
       </View>
       <Divider />
       <Text style={styles.upcoming}>Upcoming</Text>
-      <View>
+      <TouchableOpacity>
         <View
           style={
-            win
+            win > 0
               ? [styles.itemWrapper, styles.itemWrapperWin]
-              : styles.itemWrapper
+              : win === 0
+              ? styles.itemWrapper
+              : [styles.itemWrapper, styles.itemWrapperLoss]
           }>
           <Avatar size="medium" source={{ uri: nextTeam.logo }} />
           <View style={styles.titleWrapper}>
-            <Text style={styles.title}>{nextTeam.team}</Text>
-            <Text style={styles.date}>
+            <Text
+              style={
+                win > 0
+                  ? [styles.title, styles.titleWin]
+                  : win === 0
+                  ? styles.title
+                  : [styles.title, styles.titleLoss]
+              }>
+              {nextTeam.team}
+            </Text>
+            <Text
+              style={
+                win > 0
+                  ? [styles.date, styles.dateWin]
+                  : win === 0
+                  ? styles.date
+                  : [styles.date, styles.dateLoss]
+              }>
               {moment(nextTeam.date).format('dddd, MMM Do')}
             </Text>
-            <Text style={styles.location}>{nextTeam.city}</Text>
+            <Text
+              style={
+                win > 0
+                  ? [styles.location, styles.locationWin]
+                  : win === 0
+                  ? styles.location
+                  : [styles.location, styles.locationLoss]
+              }>
+              {nextTeam.city}
+            </Text>
           </View>
-          <Text style={styles.title}>{`${awayScore} - ${homeScore}`}</Text>
+          <Text
+            style={
+              win > 0
+                ? [styles.title, styles.titleWin]
+                : win === 0
+                ? styles.title
+                : [styles.title, styles.titleLoss]
+            }>{`${awayScore} - ${homeScore}`}</Text>
         </View>
-      </View>
+      </TouchableOpacity>
       <Button
         containerStyle={styles.buttonContainer}
         buttonStyle={styles.button}
