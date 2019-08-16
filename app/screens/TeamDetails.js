@@ -131,6 +131,11 @@ const TeamDetails = props => {
     navigation.navigate('Finances');
   };
 
+  const handleScorePress = () => {
+    const { navigation } = props;
+    navigation.navigate('Box');
+  };
+
   const getRandomInt = (min, max) => {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -188,7 +193,7 @@ const TeamDetails = props => {
       </View>
       <Divider />
       <Text style={styles.upcoming}>Upcoming</Text>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={handleScorePress}>
         <View style={styles.itemWrapper}>
           <Avatar size="medium" source={{ uri: nextTeam.logo }} />
           <View style={styles.titleWrapper}>

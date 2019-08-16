@@ -9,6 +9,7 @@ import Roster from '../screens/Roster';
 import Stats from '../screens/Stats';
 import Schedule from '../screens/Schedule';
 import Finances from '../screens/Finances';
+import BoxScore from '../screens/BoxScore';
 
 const SelectorStack = createStackNavigator(
   {
@@ -36,14 +37,8 @@ const SelectorStack = createStackNavigator(
   }
 );
 
-const AppNavigator = createStackNavigator(
+const DetailsStack = createStackNavigator(
   {
-    Home: {
-      screen: SelectorStack,
-      navigationOptions: {
-        header: () => null,
-      },
-    },
     Details: {
       screen: TeamDetails,
       navigationOptions: {
@@ -73,6 +68,32 @@ const AppNavigator = createStackNavigator(
       navigationOptions: () => ({
         headerTitle: 'Team Payroll',
       }),
+    },
+    Box: {
+      screen: BoxScore,
+      navigationOptions: () => ({
+        headerTitle: 'Box Score',
+      }),
+    },
+  },
+  {
+    headerMode: 'screen',
+  }
+);
+
+const AppNavigator = createStackNavigator(
+  {
+    Home: {
+      screen: SelectorStack,
+      navigationOptions: {
+        header: () => null,
+      },
+    },
+    Details: {
+      screen: DetailsStack,
+      navigationOptions: {
+        header: () => null,
+      },
     },
   },
   {
