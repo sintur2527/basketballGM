@@ -23,7 +23,7 @@ const FinanceButton = props => {
     <View style={styles.container}>
       <Button
         buttonStyle={styles.button}
-        title="Finances"
+        title="Payroll"
         onPress={props.onPress}
       />
     </View>

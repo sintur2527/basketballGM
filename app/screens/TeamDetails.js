@@ -34,7 +34,7 @@ const styles = EStyleSheet.create({
     fontWeight: '600',
     paddingBottom: 10,
   },
-  nextGame: {
+  upcoming: {
     color: '#002147',
     fontWeight: '600',
     textAlign: 'center',
@@ -46,6 +46,14 @@ const styles = EStyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: 10,
+    marginTop: 5,
+    marginBottom: 5,
+  },
+  itemWrapperWin: {
+    backgroundColor: '#4BB543',
+  },
+  itemWrapperLoss: {
+    backgroundColor: '#FC100D',
   },
   titleWrapper: {
     flexDirection: 'column',
@@ -57,14 +65,23 @@ const styles = EStyleSheet.create({
     fontWeight: '600',
     color: '#002147',
   },
+  titleWin: {
+    color: '$white',
+  },
   date: {
     color: '#7A8385',
     fontSize: 14,
     fontWeight: '600',
   },
+  dateWin: {
+    color: '$white',
+  },
   location: {
     color: '#7A8385',
     fontSize: 12,
+  },
+  locationWin: {
+    color: '$white',
   },
   buttonContainer: {
     alignItems: 'center',
@@ -83,6 +100,7 @@ const TeamDetails = props => {
 
   const [wins, setWins] = useState(0);
   const [losses, setLosses] = useState(0);
+  const [win, setWin] = useState();
 
   const [awayScore, setAwayScore] = useState(0);
   const [homeScore, setHomeScore] = useState(0);
@@ -129,8 +147,10 @@ const TeamDetails = props => {
 
     if (away > home) {
       setLosses(losses + 1);
+      setWin(false);
     } else {
       setWins(wins + 1);
+      setWin(true);
     }
 
     setSimButton(true);
@@ -141,6 +161,7 @@ const TeamDetails = props => {
     setSimButton(false);
     setAwayScore(0);
     setHomeScore(0);
+    setWin();
     nextGames.shift();
     setNextTeam(nextGames[0]);
     setNextButton(true);
@@ -163,9 +184,14 @@ const TeamDetails = props => {
         <FinanceButton onPress={handleFinancesPress} />
       </View>
       <Divider />
-      <Text style={styles.nextGame}>Upcoming</Text>
+      <Text style={styles.upcoming}>Upcoming</Text>
       <View>
-        <View style={styles.itemWrapper}>
+        <View
+          style={
+            win
+              ? [styles.itemWrapper, styles.itemWrapperWin]
+              : styles.itemWrapper
+          }>
           <Avatar size="medium" source={{ uri: nextTeam.logo }} />
           <View style={styles.titleWrapper}>
             <Text style={styles.title}>{nextTeam.team}</Text>
