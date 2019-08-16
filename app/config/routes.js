@@ -69,12 +69,6 @@ const DetailsStack = createStackNavigator(
         headerTitle: 'Team Payroll',
       }),
     },
-    Box: {
-      screen: BoxScore,
-      navigationOptions: () => ({
-        headerTitle: 'Box Score',
-      }),
-    },
   },
   {
     headerMode: 'screen',
