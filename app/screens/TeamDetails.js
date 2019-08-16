@@ -112,8 +112,9 @@ const styles = EStyleSheet.create({
     alignItems: 'center',
   },
   overlayButton: {
-    width: imageWidth / 2,
+    width: imageWidth / 1.5,
     backgroundColor: '#0046ae',
+    marginTop: 50,
     marginBottom: 10,
   },
   overlayTitle: {
@@ -121,6 +122,8 @@ const styles = EStyleSheet.create({
     fontSize: 25,
     fontWeight: '800',
     letterSpacing: 1.5,
+    padding: 5,
+    marginBottom: 5,
   },
   overlayScore: {
     color: '#002147',
@@ -133,16 +136,17 @@ const styles = EStyleSheet.create({
     fontWeight: '600',
   },
   statsLabels: {
+    color: '#002147',
     fontWeight: '600',
     fontSize: 18,
-    paddingTop: 15,
-    paddingBottom: 15,
+    paddingTop: 20,
+    paddingBottom: 20,
   },
   statsText: {
-    fontWeight: '400',
+    color: '#002147',
     fontSize: 18,
-    paddingTop: 15,
-    paddingBottom: 15,
+    paddingTop: 20,
+    paddingBottom: 20,
   },
 });
 
@@ -233,6 +237,21 @@ const TeamDetails = props => {
     setAwayScore(away);
     setHomeScore(home);
 
+    let awayFieldMade = Math.floor(away / 2);
+    let homeFieldMade = Math.floor(home / 2);
+
+    setAwayFgm(awayFieldMade);
+    setHomeFgm(homeFieldMade);
+
+    let awayFGPer = getRandomInt(45, 57) / 100;
+    let homeFGPer = getRandomInt(45, 57) / 100;
+
+    let awayFieldAtt = Math.floor(awayFieldMade / awayFGPer);
+    let homeFieldAtt = Math.floor(homeFieldMade / homeFGPer);
+
+    setAwayFga(awayFieldAtt);
+    setHomeFga(homeFieldAtt);
+
     setAwayReb(awayRebound);
     setAwayAst(awayAssist);
     setAwayStl(awaySteal);
@@ -259,10 +278,32 @@ const TeamDetails = props => {
     setNextButton(false);
   };
 
-  const handleNextPress = () => {
-    setSimButton(false);
+  const clearStats = () => {
     setAwayScore(0);
     setHomeScore(0);
+
+    setAwayFgm(0);
+    setHomeFgm(0);
+
+    setAwayFga(0);
+    setHomeFga(0);
+
+    setAwayReb(0);
+    setAwayAst(0);
+    setAwayStl(0);
+    setAwayBlk(0);
+
+    setHomeReb(0);
+    setHomeAst(0);
+    setHomeStl(0);
+    setHomeBlk(0);
+  };
+
+  const handleNextPress = () => {
+    setSimButton(false);
+
+    clearStats();
+
     setWin(0);
     nextGames.shift();
     setNextTeam(nextGames[0]);
@@ -332,53 +373,60 @@ const TeamDetails = props => {
             }>{`${awayScore} - ${homeScore}`}</Text>
         </View>
       </TouchableOpacity>
-      <Overlay isVisible={overlay} onBackdropPress={() => setOverlay(false)}>
-        <View style={styles.overlay}>
-          <Text style={styles.overlayTitle}>Final Stats</Text>
-          <View style={styles.overlayStats}>
-            <ScrollView
-              contentContainerStyle={styles.container}
-              scrollEnabled={false}>
-              <Text style={styles.overlayScore}>{awayScore}</Text>
-              <Text style={styles.overlayTeams}>
-                {nextTeam.team.split(' ')[1]}
-              </Text>
-              <Text style={styles.statsText}>{`${awayFga} - ${awayFgm}`}</Text>
-              <Text style={styles.statsText}>{awayReb}</Text>
-              <Text style={styles.statsText}>{awayAst}</Text>
-              <Text style={styles.statsText}>{awayStl}</Text>
-              <Text style={styles.statsText}>{awayBlk}</Text>
-            </ScrollView>
-            <ScrollView
-              contentContainerStyle={styles.container}
-              scrollEnabled={false}>
-              <Text style={styles.overlayScore}>{'-'}</Text>
-              <Text style={styles.overlayTeams}>{'-'}</Text>
-              <Text style={styles.statsLabels}>{`FGM - FGA`}</Text>
-              <Text style={styles.statsLabels}>{'REB'}</Text>
-              <Text style={styles.statsLabels}>{'AST'}</Text>
-              <Text style={styles.statsLabels}>{'STL'}</Text>
-              <Text style={styles.statsLabels}>{'BLK'}</Text>
-            </ScrollView>
-            <ScrollView
-              contentContainerStyle={styles.container}
-              scrollEnabled={false}>
-              <Text style={styles.overlayScore}>{homeScore}</Text>
-              <Text style={styles.overlayTeams}>{'Pistons'}</Text>
-              <Text style={styles.statsText}>{`${homeFga} - ${homeFgm}`}</Text>
-              <Text style={styles.statsText}>{homeReb}</Text>
-              <Text style={styles.statsText}>{homeAst}</Text>
-              <Text style={styles.statsText}>{homeStl}</Text>
-              <Text style={styles.statsText}>{homeBlk}</Text>
-            </ScrollView>
+      <Overlay
+        isVisible={overlay}
+        onBackdropPress={() => setOverlay(false)}
+        width={imageWidth * 0.9}>
+        <Fragment>
+          <View style={styles.overlay}>
+            <Text style={styles.overlayTitle}>Final Stats</Text>
+            <View style={styles.overlayStats}>
+              <ScrollView
+                contentContainerStyle={styles.container}
+                scrollEnabled={false}>
+                <Text style={styles.overlayScore}>{awayScore}</Text>
+                <Text style={styles.overlayTeams}>
+                  {nextTeam.team.split(' ')[1]}
+                </Text>
+                <Text
+                  style={styles.statsText}>{`${awayFgm} - ${awayFga}`}</Text>
+                <Text style={styles.statsText}>{awayReb}</Text>
+                <Text style={styles.statsText}>{awayAst}</Text>
+                <Text style={styles.statsText}>{awayStl}</Text>
+                <Text style={styles.statsText}>{awayBlk}</Text>
+              </ScrollView>
+              <ScrollView
+                contentContainerStyle={styles.container}
+                scrollEnabled={false}>
+                <Text style={styles.overlayScore}>{'-'}</Text>
+                <Text style={styles.overlayTeams}> </Text>
+                <Text style={styles.statsLabels}>{`FGM - FGA`}</Text>
+                <Text style={styles.statsLabels}>{'REB'}</Text>
+                <Text style={styles.statsLabels}>{'AST'}</Text>
+                <Text style={styles.statsLabels}>{'STL'}</Text>
+                <Text style={styles.statsLabels}>{'BLK'}</Text>
+              </ScrollView>
+              <ScrollView
+                contentContainerStyle={styles.container}
+                scrollEnabled={false}>
+                <Text style={styles.overlayScore}>{homeScore}</Text>
+                <Text style={styles.overlayTeams}>{'Pistons'}</Text>
+                <Text
+                  style={styles.statsText}>{`${homeFgm} - ${homeFga}`}</Text>
+                <Text style={styles.statsText}>{homeReb}</Text>
+                <Text style={styles.statsText}>{homeAst}</Text>
+                <Text style={styles.statsText}>{homeStl}</Text>
+                <Text style={styles.statsText}>{homeBlk}</Text>
+              </ScrollView>
+            </View>
           </View>
-        </View>
-        <Button
-          containerStyle={styles.buttonContainer}
-          buttonStyle={styles.overlayButton}
-          title="Close"
-          onPress={handleBoxClose}
-        />
+          <Button
+            containerStyle={styles.buttonContainer}
+            buttonStyle={styles.overlayButton}
+            title="Close"
+            onPress={handleBoxClose}
+          />
+        </Fragment>
       </Overlay>
       <Button
         containerStyle={styles.buttonContainer}
