@@ -320,13 +320,6 @@ const TeamDetails = props => {
           {`${wins} - ${losses}`}
         </Text>
       </View>
-      <View style={styles.buttons}>
-        <RosterButton onPress={handleRosterPress} />
-        <StatsButton onPress={handleStatsPress} />
-        <ScheduleButton onPress={handleSchedulePress} />
-        <FinanceButton onPress={handleFinancesPress} />
-      </View>
-      <Divider />
       <Text style={styles.upcoming}>Upcoming</Text>
       <TouchableOpacity onPress={handleScorePress}>
         <View style={styles.itemWrapper}>
@@ -442,6 +435,13 @@ const TeamDetails = props => {
         title="Next Game"
         onPress={() => handleNextPress()}
       />
+      <Divider />
+      <View style={styles.buttons}>
+        <RosterButton onPress={handleRosterPress} />
+        <StatsButton onPress={handleStatsPress} />
+        <ScheduleButton onPress={handleSchedulePress} />
+        <FinanceButton onPress={handleFinancesPress} />
+      </View>
     </View>
   );
 };
