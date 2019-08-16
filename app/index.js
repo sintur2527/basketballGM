@@ -8,7 +8,7 @@ import AppNavigator from './config/routes';
 
 EStyleSheet.build({
   $primaryGray: 'gray',
-  $primaryColor: '#3053FF',
+  $primaryColor: '#0046ae',
   $secondaryColor: '#FFC617',
 
   $white: '#FFFFFF',

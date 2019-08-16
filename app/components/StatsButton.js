@@ -13,7 +13,8 @@ const styles = EStyleSheet.create({
     marginTop: 10,
   },
   button: {
-    width: buttonWidth,
+    width: buttonWidth * 1.3,
+    backgroundColor: '#0046ae',
   },
 });
 
@@ -21,7 +22,7 @@ const StatsButton = props => {
   return (
     <View style={styles.container}>
       <Button
-        style={styles.button}
+        buttonStyle={styles.button}
         title="Team Stats"
         onPress={props.onPress}
       />

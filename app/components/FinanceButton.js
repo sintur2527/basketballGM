@@ -13,14 +13,19 @@ const styles = EStyleSheet.create({
     marginTop: 10,
   },
   button: {
-    width: buttonWidth,
+    width: buttonWidth * 1.3,
+    backgroundColor: '#0046ae',
   },
 });
 
 const FinanceButton = props => {
   return (
     <View style={styles.container}>
-      <Button style={styles.button} title="Finances" onPress={props.onPress} />
+      <Button
+        buttonStyle={styles.button}
+        title="Finances"
+        onPress={props.onPress}
+      />
     </View>
   );
 };
