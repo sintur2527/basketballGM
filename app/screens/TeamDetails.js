@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, StatusBar } from 'react-native';
+import { View, StatusBar, Dimensions } from 'react-native';
+import { Text } from 'react-native-elements';
 
 import NavBar from '../components/Header';
 import Team from '../components/Team';
@@ -10,6 +11,8 @@ import FinanceButton from '../components/FinanceButton';
 
 import EStyleSheet from 'react-native-extended-stylesheet';
 
+const imageWidth = Dimensions.get('window').width;
+
 const styles = EStyleSheet.create({
   buttons: {
     flex: 1,
@@ -18,6 +21,16 @@ const styles = EStyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-around',
     paddingTop: 10,
+  },
+  recordContainer: {
+    width: imageWidth,
+    alignItems: 'center',
+    backgroundColor: '#002147',
+  },
+  record: {
+    color: '$white',
+    fontWeight: '600',
+    paddingBottom: 10,
   },
 });
 
@@ -44,6 +57,11 @@ const TeamDetails = props => {
       <StatusBar translucent={false} barStyle="light-content" />
       <NavBar />
       <Team />
+      <View style={styles.recordContainer}>
+        <Text h2 style={styles.record}>
+          0 - 0
+        </Text>
+      </View>
       <View style={styles.buttons}>
         <RosterButton onPress={handleRosterPress} />
         <StatsButton onPress={handleStatsPress} />
