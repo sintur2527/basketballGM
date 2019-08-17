@@ -12,29 +12,28 @@
 ## Table of Contents
 
 1. [Screens](#screens)
-2. [Time](#time)
 
 ### Screens
 
-|                                    Home Screen                                    |       |                                      Team Selector                                      |
-| :-------------------------------------------------------------------------------: | :---: | :-------------------------------------------------------------------------------------: |
-| <img src="./documentation/basketballGM_open.gif" alt="home-screen" height="300"/> |       | <img src="./documentation/basketballGM_selector.gif" alt="team-selector" height="300"/> |
+|                                    Home Screen                                    |                                      Team Selector                                      |
+| :-------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------: |
+| <img src="./documentation/basketballGM_open.gif" alt="home-screen" height="300"/> | <img src="./documentation/basketballGM_selector.gif" alt="team-selector" height="300"/> |
 
 
-|                                     Team Details                                      |       |                                   Simulate / Next Game                                   |
-| :-----------------------------------------------------------------------------------: | :---: | :--------------------------------------------------------------------------------------: |
-| <img src="./documentation/basketballGM_details.png" alt="team-details" height="300"/> |       | <img src="./documentation/basketballGM_simulation.gif" alt="team-details" height="300"/> |
+|                                     Team Details                                      |                                   Simulate / Next Game                                   |
+| :-----------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------: |
+| <img src="./documentation/basketballGM_details.png" alt="team-details" height="300"/> | <img src="./documentation/basketballGM_simulation.gif" alt="team-details" height="300"/> |
 
-|                                        Roster                                        |       |                                       Team Stats                                        |
-| :----------------------------------------------------------------------------------: | :---: | :-------------------------------------------------------------------------------------: |
-| <img src="./documentation/basketballGM_roster.gif" alt="team-details" height="300"/> |       | <img src="./documentation/basketballGM_teamStats.gif" alt="team-details" height="300"/> |
+|                                        Roster                                        |                                       Team Stats                                        |
+| :----------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------: |
+| <img src="./documentation/basketballGM_roster.gif" alt="team-details" height="300"/> | <img src="./documentation/basketballGM_teamStats.gif" alt="team-details" height="300"/> |
 
 
 
-|                                        Schedule                                        |       |                                        Contracts                                        |
-| :------------------------------------------------------------------------------------: | :---: | :-------------------------------------------------------------------------------------: |
-| <img src="./documentation/basketballGM_schedule.gif" alt="team-details" height="300"/> |       | <img src="./documentation/basketballGM_contracts.gif" alt="team-details" height="300"/> |
+|                                        Schedule                                        |                                        Contracts                                        |
+| :------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------: |
+| <img src="./documentation/basketballGM_schedule.gif" alt="team-details" height="300"/> | <img src="./documentation/basketballGM_contracts.gif" alt="team-details" height="300"/> |
 
-### Time
+
 
 
