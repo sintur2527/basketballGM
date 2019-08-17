@@ -35,7 +35,10 @@ const Team = () => {
     <View style={styles.container}>
       <Image
         style={styles.image}
-        source={require('../images/pistons_primary_on_dark.png')}
+        source={{
+          uri:
+            'http://content.sportslogos.net/logos/6/223/full/8058_detroit_pistons-primary_on_dark-2018.png',
+        }}
         PlaceholderContent={<ActivityIndicator size="large" color="#FFFFFF" />}
         placeholderStyle={styles.placeholder}
       />

@@ -10,7 +10,7 @@ import Carousel from 'react-native-snap-carousel';
 
 import EStyleSheet from 'react-native-extended-stylesheet';
 
-import { eastern } from '../images/teamLogos/logos';
+import { eastern } from '../config/logos';
 
 const imageWidth = Dimensions.get('window').width;
 
@@ -44,7 +44,7 @@ const EasternSelector = props => {
           <Image
             style={styles.image}
             resizeMode="contain"
-            source={item}
+            source={{ uri: item }}
             PlaceholderContent={<ActivityIndicator size="large" />}
             placeholderStyle={styles.placeholder}
           />

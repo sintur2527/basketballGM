@@ -13,6 +13,7 @@ EStyleSheet.build({
 });
 
 const App = () => {
+  console.disableYellowBox = true;
   return (
     <ThemeProvider>
       <AppNavigator />
