@@ -5,7 +5,7 @@ import {
   Dimensions,
   ActivityIndicator,
 } from 'react-native';
-import { Card, Text, Image } from 'react-native-elements';
+import { Image } from 'react-native-elements';
 
 import EStyleSheet from 'react-native-extended-stylesheet';
 
@@ -45,7 +45,10 @@ const Selection = props => {
         <Image
           style={styles.image}
           resizeMode="contain"
-          source={require('../images/eastern_conference.png')}
+          source={{
+            uri:
+              'http://content.sportslogos.net/logos/6/999/full/9110__nba_eastern_conference-primary_on_dark-2018.png',
+          }}
           PlaceholderContent={<ActivityIndicator />}
           placeholderStyle={styles.placeholder}
         />
@@ -54,7 +57,10 @@ const Selection = props => {
         <Image
           style={styles.image}
           resizeMode="contain"
-          source={require('../images/western_conference.png')}
+          source={{
+            uri:
+              'http://content.sportslogos.net/logos/6/1001/full/8135__nba_western_conference-primary_on_dark-2018.png',
+          }}
           PlaceholderContent={<ActivityIndicator />}
           placeholderStyle={styles.placeholder}
         />
