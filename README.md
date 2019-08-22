@@ -5,16 +5,17 @@
 > 
 > All images are property of the National Basketball Association (NBA). This project is strictly for personal use and not meant to be monetized. No copyright infringement intended. 
 
-## Technologies Used
-
-<img src="./documentation/ReactNative.png" alt="react-native" width="300"/>
-
 ## Table of Contents
 
+1. [Technologies Used](#technologies-used)
 1. [Description](#description)
 2. [Screens](#screens)
 3. [Building and Running](#building-and-running)
 4. [Timelog](#timelog)
+
+### Technologies Used
+
+<img src="./documentation/ReactNative.png" alt="react-native" width="300"/>
 
 ### Description
 
